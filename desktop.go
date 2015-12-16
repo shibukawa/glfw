@@ -6,7 +6,7 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/go-gl/glfw/v3.1/glfw"
+	"github.com/go-gl/glfw/v3.2/glfw"
 	"golang.org/x/tools/godoc/vfs"
 )
 
@@ -138,6 +138,33 @@ func (w *Window) SetCharCallback(cbfun CharCallback) (previous CharCallback) {
 	}
 
 	p := w.Window.SetCharCallback(wrappedCbfun)
+	_ = p
+
+	// TODO: Handle previous.
+	return nil
+}
+
+type PreeditCallback func(w *Window, text []rune, blocks []int, focusedBlock int)
+
+func (w *Window) SetPreeditCallback(cbfun PreeditCallback) (previous PreeditCallback) {
+	wrappedCbfun := func(_ *glfw.Window, text []rune, blocks []int, focusedBlock int) {
+		cbfun(w, text, blocks, focusedBlock)
+	}
+
+	p := w.Window.SetPreeditCallback(wrappedCbfun)
+	_ = p
+
+	// TODO: Handle previous.
+	return nil
+}
+
+type IMEStatusCallback func(w *Window)
+
+func (w *Window) SetIMEStatusCallback(cbfun IMEStatusCallback) (previous IMEStatusCallback) {
+	wrappedCbfun := func(_ *glfw.Window) {
+		cbfun(w)
+	}
+	p := w.Window.SetIMEStatusCallback(wrappedCbfun)
 	_ = p
 
 	// TODO: Handle previous.

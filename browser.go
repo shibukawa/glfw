@@ -814,9 +814,34 @@ func DefaultWindowHints() {
 	// TODO: Implement.
 }
 
+// SetPreeditCursorPos gives information to the window system to decide candidate window.
+func (w *Window) SetPreeditCursorPos(x, y, h int) {
+	// TODO: Implement.
+}
+
+// GetPreeditCursorPos returns information to the window system to decide candidate window.
+func (w *Window) GetPreeditCursorPos() (int, int, int) {
+	// TODO: Implement.
+	return -1, -1, -1
+}
+
+func (w *Window) ResetPreeditText() {
+	// TODO: Implement.
+}
+
+func (w *Window) GetIMEStatus() bool {
+	// TODO: Implement.
+	return false
+}
+
+func (w *Window) SetIMEStatus(active bool) {
+	// TODO: Implement.
+}
+
 func (w *Window) SetClipboardString(str string) {
 	// TODO: Implement.
 }
+
 func (w *Window) GetClipboardString() (string, error) {
 	// TODO: Implement.
 	return "", errors.New("GetClipboardString not implemented")
@@ -885,6 +910,24 @@ func (w *Window) SetCursorEnterCallback(cbfun CursorEnterCallback) (previous Cur
 type CharModsCallback func(w *Window, char rune, mods ModifierKey)
 
 func (w *Window) SetCharModsCallback(cbfun CharModsCallback) (previous CharModsCallback) {
+	// TODO: Implement.
+
+	// TODO: Handle previous.
+	return nil
+}
+
+type PreeditCallback func(w *Window, text []rune, blocks []int, focusedBlock int)
+
+func (w *Window) SetPreeditCallback(cbfun PreeditCallback) (previous PreeditCallback) {
+	// TODO: Implement.
+
+	// TODO: Handle previous.
+	return nil
+}
+
+type IMEStatusCallback func(w *Window)
+
+func (w *Window) SetIMEStatusCallback(cbfun IMEStatusCallback) (previous IMEStatusCallback) {
 	// TODO: Implement.
 
 	// TODO: Handle previous.
