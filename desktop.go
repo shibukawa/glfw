@@ -6,7 +6,7 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/go-gl/glfw/v3.2/glfw"
+	"github.com/shibukawa/glfw-2/v3.2/glfw"
 	"golang.org/x/tools/godoc/vfs"
 )
 
